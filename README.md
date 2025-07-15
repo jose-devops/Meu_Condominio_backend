@@ -4,6 +4,7 @@ Este é um projeto backend desenvolvido com **Spring Boot** para gerenciar um si
 
 ## 📁 Estrutura do Projeto
 
+```
 backend-meu-condominio/
 ├── src/main/java/com/api/app/
 │ ├── config/                  # Configurações (CORS, etc)
@@ -15,6 +16,7 @@ backend-meu-condominio/
 │ └── AppApplication.java     # Classe principal do Spring Boot
 ├── pom.xml                    # Configuração Maven
 └── .mvn/                      # Wrapper Maven
+```
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -37,26 +39,26 @@ backend-meu-condominio/
 
 ## 📦 Endpoints Principais
 
-### Autenticação
+### **Autenticação**
 - `POST /auth/login` - Realiza login e retorna o token JWT.
 
-### Usuários
+### **Usuários**
 - `GET /usuario/{id}` - Buscar usuário por ID.
 - `POST /usuario` - Criar novo usuário.
 
-### Proprietário
+### **Proprietário**
 - `GET /proprietario/me` - Dados do proprietário logado.
 
-### Morador
+### **Morador**
 - `GET /morador` - Lista moradores vinculados ao condomínio.
 
-### Imóvel
+### **Imóvel**
 - `POST /imovel` - Cadastro de imóvel.
 - `GET /imovel` - Listagem de imóveis.
 - `PUT /imovel/{id}` - Atualiza informações do imóvel.
 - `DELETE /imovel/{id}` - Deleta imóvel.
 
-### Agendamento
+### **Agendamento**
 - `POST /agendamento` - Criar agendamento.
 - `GET /agendamento` - Listar agendamentos.
 - `PUT /agendamento/{id}` - Atualizar agendamento.
@@ -81,7 +83,7 @@ cd backend-meu-condominio
 
 # Execute o projeto
 ./mvnw spring-boot:run
-
+```
 
 # 🧪 Como Executar os Testes
 
