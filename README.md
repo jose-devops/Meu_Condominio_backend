@@ -81,3 +81,80 @@ cd backend-meu-condominio
 
 # Execute o projeto
 ./mvnw spring-boot:run
+
+
+# 🧪 Como Executar os Testes
+
+Este guia explica como executar os testes unitários do seu projeto passo a passo, usando o **Maven**.
+
+### Pré-requisitos
+
+Antes de executar os testes, certifique-se de que os seguintes pré-requisitos estão configurados:
+
+- **Java 17 ou superior**
+- **Maven 3.8 ou superior**
+- **Dependências do projeto instaladas** (Execute o comando `./mvnw clean install` para garantir que todas as dependências necessárias sejam baixadas).
+
+## Passo 1: Acessar o diretório do projeto
+
+Certifique-se de estar no diretório do projeto onde o arquivo `pom.xml` está localizado. Se não tiver feito isso ainda, navegue até o diretório do projeto:
+
+```bash
+cd /caminho/para/seu/projeto/backend-meu-condominio
+```
+
+## Passo 2: Executar todos os testes unitários
+
+Para rodar todos os testes unitários do projeto, utilize o comando Maven:
+
+```bash
+./mvnw test
+```
+
+Esse comando irá executar todos os testes configurados no projeto. O Maven irá compilar o código e, em seguida, executar os testes definidos no diretório `src/test/java`. O resultado será mostrado no terminal.
+
+### O que esperar:
+- O Maven irá exibir no terminal o progresso dos testes.
+- Caso todos os testes passem, você verá uma mensagem como **BUILD SUCCESS**.
+- Se algum teste falhar, o Maven irá exibir detalhes sobre o erro, incluindo a falha do teste e o motivo.
+
+## Passo 3: Rodar testes de uma classe específica
+
+Se você deseja rodar apenas uma classe de teste específica, use o comando abaixo, substituindo `NomeDaClasseDeTeste` pelo nome da classe que você quer executar:
+
+```bash
+./mvnw -Dtest=NomeDaClasseDeTeste test
+```
+
+Exemplo:
+
+```bash
+./mvnw -Dtest=AgendamentoServiceTest test
+```
+
+Isso executará apenas os testes da classe `AgendamentoServiceTest`.
+
+## Passo 4: Gerar um relatório dos testes
+
+Após rodar os testes, você pode gerar um relatório detalhado dos resultados. Para isso, execute o seguinte comando:
+
+```bash
+./mvnw surefire-report:report
+```
+
+Este comando gerará um relatório em HTML, que estará localizado na pasta `target/site`. Você pode abrir o arquivo gerado no navegador para visualizar os detalhes dos testes executados.
+
+## Passo 5: Verificar a cobertura de código (Opcional)
+
+Se você configurou o **Jacoco** (ou outro plugin de cobertura de código), pode rodar o comando abaixo para verificar a cobertura de código:
+
+```bash
+./mvnw clean verify
+```
+
+Esse comando irá executar os testes e gerar um relatório de cobertura. A cobertura de código ajudará a entender quais partes do código estão sendo testadas e quais não estão.
+
+## Dicas Importantes
+
+- **Erros Comuns**: Se os testes falharem, verifique as mensagens de erro para entender o que precisa ser corrigido. O Maven geralmente fornece informações úteis para depuração.
+- **Testes Específicos**: Você pode também rodar métodos específicos dentro de uma classe de teste, mas isso pode exigir configurações adicionais dependendo do seu ambiente.
