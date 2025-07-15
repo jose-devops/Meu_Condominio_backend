@@ -1,125 +1,83 @@
-🏡 Backend - Sistema de Gestão de Condomínios
-Este é o projeto backend desenvolvido com Spring Boot para gerenciar um sistema de administração de condomínios. O sistema permite o cadastro de proprietários, moradores, imóveis, contratos e agendamentos, com um sistema de autenticação e permissões baseadas nos tipos de usuário.
+# 🏡 Backend - Sistema de Gestão de Condomínios
 
-📁 Estrutura do Projeto
-pgsql
-Copiar
-backend-meu-condominio/  
-├── src/main/java/com/api/app/  
-│   ├── config/                  # Configurações (CORS, etc)
-│   ├── controllers/             # Controladores REST
-│   ├── dtos/                    # Objetos de transferência de dados
-│   ├── models/                  # Entidades JPA
-│   │   └── enums/               # Enumerações (Tipo de usuário, Status de agendamento)
-│   ├── repositories/            # Interfaces JPA Repository
-│   └── AppApplication.java     # Classe principal do Spring Boot
-├── pom.xml                      # Configuração do Maven
-└── .mvn/                        # Wrapper do Maven
-🚀 Tecnologias Utilizadas
-Java 17
+Este é um projeto backend desenvolvido com **Spring Boot** para gerenciar um sistema de administração de **condomínios**. O sistema permite o cadastro de **proprietários**, **moradores**, **imóveis**, **contratos**, **agendamentos** e **serviços**, com um sistema de autenticação e permissões baseadas nos tipos de usuário.
 
-Spring Boot
+## 📁 Estrutura do Projeto
 
-Spring Data JPA
+backend-meu-condominio/
+├── src/main/java/com/api/app/
+│ ├── config/                  # Configurações (CORS, etc)
+│ ├── controllers/             # Controladores REST
+│ ├── dtos/                    # Objetos de transferência de dados
+│ ├── models/                  # Entidades JPA
+│ │ └── enums/                 # Enumerações (Tipo de usuário, Status de Agendamento, etc)
+│ ├── repositories/            # Interfaces JPA Repository
+│ └── AppApplication.java     # Classe principal do Spring Boot
+├── pom.xml                    # Configuração Maven
+└── .mvn/                      # Wrapper Maven
 
-Spring Security (com autenticação JWT)
+## 🚀 Tecnologias Utilizadas
 
-PostgreSQL (ou outro banco configurado)
+- Java 17
+- Spring Boot
+- Spring Data JPA
+- Spring Security (com autenticação JWT)
+- PostgreSQL (ou outro banco de dados configurado)
+- Maven
 
-Maven
+## 🔐 Funcionalidades
 
-🔐 Funcionalidades
-Autenticação com JWT: Sistema de login seguro com token.
+- **Autenticação com JWT**: Login e gerenciamento de usuários com tokens.
+- **CRUD completo de usuários**: Cadastro e gerenciamento de **proprietários** e **moradores**.
+- **Cadastro e gerenciamento de **imóveis** e **contratos**.
+- **Cadastro e gerenciamento de **agendamentos**.
+- **Enumerações para status** e **tipos** (ex: status de agendamento).
+- **Permissões baseadas no tipo de usuário**: Diferenciação entre **proprietário** e **morador**.
+- **CORS configurado** para permitir requisições de diferentes domínios.
 
-CRUD de usuários: Cadastro e gerenciamento de proprietários e moradores.
+## 📦 Endpoints Principais
 
-Cadastro e gerenciamento de imóveis.
+### Autenticação
+- `POST /auth/login` - Realiza login e retorna o token JWT.
 
-Cadastro e gerenciamento de contratos.
+### Usuários
+- `GET /usuario/{id}` - Buscar usuário por ID.
+- `POST /usuario` - Criar novo usuário.
 
-Cadastro e gerenciamento de agendamentos.
+### Proprietário
+- `GET /proprietario/me` - Dados do proprietário logado.
 
-Permissões baseadas no tipo de usuário: Permissões diferenciadas entre proprietário e morador.
+### Morador
+- `GET /morador` - Lista moradores vinculados ao condomínio.
 
-CORS configurado para permitir requisições de diferentes domínios.
+### Imóvel
+- `POST /imovel` - Cadastro de imóvel.
+- `GET /imovel` - Listagem de imóveis.
+- `PUT /imovel/{id}` - Atualiza informações do imóvel.
+- `DELETE /imovel/{id}` - Deleta imóvel.
 
-📦 Endpoints Principais
-Autenticação
-POST /auth/login: Realiza login e retorna o token JWT.
+### Agendamento
+- `POST /agendamento` - Criar agendamento.
+- `GET /agendamento` - Listar agendamentos.
+- `PUT /agendamento/{id}` - Atualizar agendamento.
+- `DELETE /agendamento/{id}` - Deletar agendamento.
 
-Usuários
-GET /usuario/{id}: Busca usuário por ID.
+## 📌 Como Executar
 
-POST /usuario: Cria novo usuário.
+### Pré-requisitos
+- **Java 17+**
+- **Maven 3.8+**
+- **PostgreSQL** ou outro banco de dados configurado
 
-Proprietário
-GET /proprietario/me: Retorna os dados do proprietário logado.
+### Passos
 
-Morador
-GET /morador: Lista moradores vinculados.
-
-Agendamento
-POST /agendamento: Cria um novo agendamento.
-
-GET /agendamento: Lista os agendamentos existentes.
-
-PUT /agendamento/{id}: Atualiza um agendamento existente.
-
-DELETE /agendamento/{id}: Deleta um agendamento.
-
-📌 Como Executar
-Pré-requisitos
-Java 17+
-
-Maven 3.8+
-
-PostgreSQL ou outro banco de dados configurado
-
-Passos
-Clone o projeto:
-
-bash
-Copiar
+```bash
+# Clone o projeto
 git clone https://github.com/seuusuario/backend-meu-condominio.git
 cd backend-meu-condominio
-Instale as dependências:
 
-Se você não tiver o Maven instalado, utilize o wrapper Maven incluído no projeto:
-
-bash
-Copiar
+# Compile o projeto
 ./mvnw clean install
-Configure o banco de dados:
 
-Certifique-se de configurar seu banco de dados (PostgreSQL ou outro) no arquivo src/main/resources/application.properties. Abaixo está um exemplo de configuração para PostgreSQL:
-
-properties
-Copiar
-spring.datasource.url=jdbc:postgresql://localhost:5432/seu_banco
-spring.datasource.username=seu_usuario
-spring.datasource.password=sua_senha
-Execute o projeto:
-
-Após a instalação e configuração, execute o projeto:
-
-bash
-Copiar
+# Execute o projeto
 ./mvnw spring-boot:run
-Isso iniciará a aplicação, que estará disponível em http://localhost:8080 (ou outro endereço configurado).
-
-🧪 Como Executar os Testes
-Testes Unitários e de Integração
-Rodar todos os testes com Maven:
-
-Para executar todos os testes, use o comando do Maven:
-
-bash
-Copiar
-mvn test
-Rodar um teste específico:
-
-Para rodar uma classe de teste específica:
-
-bash
-Copiar
-mvn -Dtest=NomeDaClasseDeTeste test
